@@ -237,17 +237,18 @@ ggplot(leafshape, aes(x = bladelen , y = location , color = arch )) +
   geom_boxplot() + 
   labs(x = 'Leaf length', y ='Location', title = 'Leaf parameters',
        color = "Architecture", caption = 'from leafshape dataset') + 
-  theme() + 
-  theme_bw(16) 
+  theme(text = element_text(size=20)) + 
+  theme_bw(16)  
 
 
 # Больше графиков богу графиков
 #3.2 Сложный график -- violin plot, с разделением по архитекутре листьев (5 баллов)
-ggplot(leafshape, aes (x = location, y = bladelen, fill = location)) + 
+ggplot(leafshape, aes (x = location, y = bladelen, color = I('black'), fill = location)) + 
   geom_violin() + 
   facet_grid(.~arch) + 
   labs( x = 'Location/architecture', y = 'Leaf length',
         title = 'Leaf parameters', fill = "Location", caption = 'from leafshape dataset') + 
   theme_bw() + 
   scale_fill_brewer(palette = "Dark2") + 
+  theme(text = element_text(size=20)) +
   theme(axis.text.x = element_text(angle = 30, hjust = 1))
